@@ -3,10 +3,12 @@ package main.java.com.chiku.springmvcexample;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
+@RequestMapping("/hello")
 public class HelloWorldController {
 
     // need a controller method to show initial HTML form
@@ -37,6 +39,21 @@ public class HelloWorldController {
         String result = "Yo! " + theName;
 
         // add message to the model
+        model.addAttribute("message", result);
+
+        return "helloworld";
+    }
+
+    // HTML form processing method version 3
+    @RequestMapping("/processFormVersionThree")
+    public String processingMethodVersionThree(@RequestParam("studentName") String theName, Model model){
+        // convert string to all caps
+        theName = theName.toUpperCase();
+
+        // create string message to be desplayed
+        String result = "hey there, " + theName + " from version 3";
+
+        // add message as an attribute to model object
         model.addAttribute("message", result);
 
         return "helloworld";
