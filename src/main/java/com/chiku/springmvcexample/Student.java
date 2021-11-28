@@ -1,4 +1,4 @@
-package main.java.com.chiku.springmvcexample;
+package com.chiku.springmvcexample;
 
 public class Student {
 
